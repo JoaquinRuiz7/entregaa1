@@ -51,25 +51,25 @@ descartarPrimeros p (x:xs)
 
 iguales::Eq a =>a->a-> Bool
 iguales e e2 = ( e == e2 );
-contiene::Int->[Int]->Bool
+contiene::Eq a =>a->[a]->Bool
 contiene e [] = False
 contiene e (x:xs) 
     | e == x = True
     | otherwise = contiene e xs;
 
-exor::[Int]->[Int]->[Int]
+exor:: Ord a => [a] -> [a] -> [a]
 exor [] l = l
 exor l [] = l
 exor l1 l2 = eliminarRepetidos ( (noContieneLista l1 l2)++(noContieneLista l2 l1) );
 
-noContieneLista::[Int]->[Int]->[Int]
+noContieneLista::Eq a=>[a]->[a]->[a]
 noContieneLista l [] = []
 noContieneLista [] l2 = [] 
 noContieneLista (x:xs) l2 
     |contiene x l2 = noContieneLista xs l2
     |otherwise = x:noContieneLista xs l2;
 
-eliminarRepetidos::[Int]->[Int]
+eliminarRepetidos::Eq a=>[a]->[a]
 eliminarRepetidos [] = []
 eliminarRepetidos (x:xs)
     | contiene x xs = eliminarRepetidos xs
