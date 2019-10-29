@@ -1,4 +1,6 @@
 module Tarea1 where
+-- Estudiante : Joaquin Ruiz   
+--Nro de estudiante : 206164
 --Booleanos
 andor::Bool -> Bool -> Bool -> Bool
 andor b1 b2 b3 = (b1 && b2) || b3;
